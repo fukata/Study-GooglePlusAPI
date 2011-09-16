@@ -59,10 +59,5 @@ class Google_plus_api {
 		curl_setopt($ch, CURLOPT_POST, FALSE);
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
 		return curl_exec($ch);
-/*
-		$url = sprintf('https://www.google.com/m8/feeds/contacts/default/full?access_token=%s', $access_token);
-		$this->oauth->fetch($url);
-		return json_decode($this->oauth->getLastResponse());
-*/
 	}
 }
