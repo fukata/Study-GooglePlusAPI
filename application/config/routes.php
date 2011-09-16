@@ -38,6 +38,8 @@
 |
 */
 
+$route['oauth2callback'] = "google_plus/callback";
+
 $route['default_controller'] = "welcome";
 $route['404_override'] = '';
 
