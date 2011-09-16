@@ -20,10 +20,10 @@ class Google_plus extends CI_Controller {
 	 */
 	function callback() {
 		$data = new stdClass();
-
+		$user_id = '113705111024427296123'; // Your User ID
 		$data->code = $this->input->get('code');
 		$data->tokens = $this->google_plus_api->access_token($data->code);
-		$data->feeds = $this->google_plus_api->feeds($data->tokens->access_token);
+		$data->user = $this->google_plus_api->people_userid($user_id, $data->tokens->access_token);
 		$this->load->view('google_plus/callback', $data);
 	}
 

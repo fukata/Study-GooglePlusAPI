@@ -12,7 +12,7 @@
 <?php print_r($tokens); ?>
 </pre>
 
-<p>Feeds</p>
-<?php echo htmlspecialchars($feeds) ?>
+<p>People UserId</p>
+<?php print_r($user) ?>
 </body>
 </html>

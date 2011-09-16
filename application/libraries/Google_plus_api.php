@@ -15,7 +15,7 @@ class Google_plus_api {
 		$url = sprintf('https://accounts.google.com/o/oauth2/auth?client_id=%s&redirect_uri=%s&scope=%s&response_type=%s&state=%s',
 			$this->client_id,
 			$this->callback_url,
-			'https://www.google.com/m8/feeds/',
+			'https://www.googleapis.com/auth/plus.me',
 			'code',
 			''
 		);
@@ -52,12 +52,12 @@ class Google_plus_api {
 		return json_decode($this->oauth->getLastResponse());
 	}
 
-	function feeds($access_token) {
-		$url = sprintf('https://www.google.com/m8/feeds/contacts/default/full?access_token=%s', $access_token);
+	function people_userid($user_id, $access_token) {
+		$url = sprintf('https://www.googleapis.com/plus/v1/people/%s?key=%s&access_token=%s', $user_id, $this->client_id, $access_token);
 		$ch = curl_init();
 		curl_setopt($ch, CURLOPT_URL, $url);
 		curl_setopt($ch, CURLOPT_POST, FALSE);
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
-		return curl_exec($ch);
+		return json_decode(curl_exec($ch));
 	}
 }
